@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>난방비 계산기</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 20px auto;
+            text-align: center;
+        }
+        input {
+            width: 80%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+        button {
+            padding: 10px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>대한민국 난방비 계산기</h2>
+    <label>난방 사용량 (m³ 또는 kWh)</label><br>
+    <input type="number" id="usage" placeholder="예: 500"><br>
+    <label>에너지 단가 (원/m³ 또는 원/kWh)</label><br>
+    <input type="number" id="rate" placeholder="예: 120"><br>
+    <label>사용 기간 (개월)</label><br>
+    <input type="number" id="months" placeholder="예: 3"><br>
+    <button onclick="calculate()">계산하기</button>
+    <div id="result"></div>
+
+    <script>
+        function calculate() {
+            let usage = parseFloat(document.getElementById("usage").value);
+            let rate = parseFloat(document.getElementById("rate").value);
+            let months = parseInt(document.getElementById("months").value);
+            
+            let totalCost = usage * rate * months;
+            document.getElementById("result").innerText = `총 난방비: ₩${totalCost.toLocaleString()}원`;
+        }
+    </script>
+</body>
+</html>
